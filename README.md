@@ -2,6 +2,7 @@
 同济大学汽车学院课程：计算方法
 
 ## 贡献者
-<a href="https://github.com/weyumm/Numerical_Analysis-Computational_Methods/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=weyumm/Numerical_Analysis-Computational_Methods" />
-</a>
+## 贡献者
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
+

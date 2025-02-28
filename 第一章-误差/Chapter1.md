@@ -100,7 +100,9 @@ end
    - 式中\(\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\)和\(\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\)分别是\(x_{1}^{*}\)和\(x_{2}^{*}\)对\(y^{*}\)的绝对误差增长因子，用于表示绝对误差\(e(x_1)\)和\(e(x_2)\)经过传播后增大或缩小的倍数。 
 
 3. **相对误差传播公式**
-相对误差传播公式为 $\varepsilon_{r}^{*}(y)=\frac{\varepsilon(y)}{\left|y^{*}\right|} \approx \sum_{i = 1}^{n}\left[\left|\left(\frac{\partial f}{\partial x_{i}}\right)^{*}\right| \cdot \frac{\varepsilon\left(x_{i}\right)}{\left|y^{*}\right|}\right]=\sum_{i = 1}^{n}\left[\left|\frac{x_{i}^{*}}{y^{*}}\left(\frac{\partial f}{\partial x_{i}}\right)^{*}\right| \cdot \varepsilon_{r}^{*}\left(x_{i}\right)\right]$ 。当误差增长因子的绝对值很大时，数据误差经运算传播后，可能导致结果出现较大误差。
+相对误差传播公式为 
+$$ \varepsilon_{r}^{*}(y)=\frac{\varepsilon(y)}{\left|y^{*}\right|} \approx \sum_{i = 1}^{n}\left[\left|\left(\frac{\partial f}{\partial x_{i}}\right)^{*}\right| \cdot \frac{\varepsilon\left(x_{i}\right)}{\left|y^{*}\right|}\right]=\sum_{i = 1}^{n}\left[\left|\frac{x_{i}^{*}}{y^{*}}\left(\frac{\partial f}{\partial x_{i}}\right)^{*}\right| \cdot \varepsilon_{r}^{*}\left(x_{i}\right)\right]$$
+ 。当误差增长因子的绝对值很大时，数据误差经运算传播后，可能导致结果出现较大误差。
 
 ### 两数和、差、积与商的误差传播公式
 - 绝对误差：

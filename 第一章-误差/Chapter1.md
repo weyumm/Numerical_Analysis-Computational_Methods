@@ -92,12 +92,12 @@ end
 在数值计算中，参与运算的数据多为近似数，本身带有误差，这些误差会在运算中传播与积累，从而影响计算结果的准确性。虽然精确确定计算结果的精度较为困难，但对计算误差进行定量估计是可行的。
 
 1. **原始公式推导**：
-   - 对于函数\(f(x_1,x_2)\)，其泰勒展开式包含高阶项\(+\frac{1}{2!}\left[\left(\frac{\partial^{2}f}{\partial x_{1}^{2}}\right)^{*}\cdot(x_1 - x_{1}^{*})^{2}+2\left(\frac{\partial^{2}f}{\partial x_{1}\partial x_{2}}\right)^{*}\cdot(x_1 - x_{1}^{*})(x_2 - x_{2}^{*})+\left(\frac{\partial^{2}f}{\partial x_{2}^{2}}\right)^{*}\cdot(x_2 - x_{2}^{*})^{2}\right]+\cdots\)，其中\(x_1 - x_{1}^{*}=e(x_1)\)和\(x_2 - x_{2}^{*}=e(x_2)\)一般为小量值。
-   - 忽略高阶小量后，\(f(x_1,x_2)\)可简化为\(f(x_1,x_2)=f(x_{1}^{*},x_{2}^{*})+\left[\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\cdot e(x_1)+\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\cdot e(x_2)\right]\)。
+   - 对于函数$f(x_1,x_2)$，其泰勒展开式包含高阶项$+\frac{1}{2!}\left[\left(\frac{\partial^{2}f}{\partial x_{1}^{2}}\right)^{*}\cdot(x_1 - x_{1}^{*})^{2}+2\left(\frac{\partial^{2}f}{\partial x_{1}\partial x_{2}}\right)^{*}\cdot(x_1 - x_{1}^{*})(x_2 - x_{2}^{*})+\left(\frac{\partial^{2}f}{\partial x_{2}^{2}}\right)^{*}\cdot(x_2 - x_{2}^{*})^{2}\right]+\cdots$，其中$x_1 - x_{1}^{*}=e(x_1)$和$x_2 - x_{2}^{*}=e(x_2)$一般为小量值。
+   - 忽略高阶小量后，$f(x_1,x_2)$可简化为$f(x_1,x_2)=f(x_{1}^{*},x_{2}^{*})+\left[\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\cdot e(x_1)+\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\cdot e(x_2)\right]$。
 2. **绝对误差传播公式**：
-   - 设\(y = f(x_1,x_2)\)，\(y^{*}=f(x_{1}^{*},x_{2}^{*})\)，绝对误差\(e(y)=y - y^{*}\)。
-   - 则\(e(y)=f(x_1,x_2)-f(x_{1}^{*},x_{2}^{*})\approx\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\cdot e(x_1)+\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\cdot e(x_2)\) 。
-   - 式中\(\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\)和\(\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\)分别是\(x_{1}^{*}\)和\(x_{2}^{*}\)对\(y^{*}\)的绝对误差增长因子，用于表示绝对误差\(e(x_1)\)和\(e(x_2)\)经过传播后增大或缩小的倍数。 
+   - 设$y = f(x_1,x_2)$，$y^{*}=f(x_{1}^{*},x_{2}^{*})$，绝对误差$e(y)=y - y^{*}$。
+   - 则$e(y)=f(x_1,x_2)-f(x_{1}^{*},x_{2}^{*})\approx\left(\frac{\partial f}{\partial x_{1}}\right)^{*}\cdot e(x_1)+\left(\frac{\partial f}{\partial x_{2}}\right)^{*}\cdot e(x_2)$ 。
+   - 式中$\left(\frac{\partial f}{\partial x_{1}}\right)^{*}$和$\left(\frac{\partial f}{\partial x_{2}}\right)^{*}$分别是$x_{1}^{*}$和$x_{2}^{*}$对$y^{*}$的绝对误差增长因子，用于表示绝对误差$e(x_1)$和$e(x_2)$经过传播后增大或缩小的倍数。 
 
 3. **相对误差传播公式**
 相对误差传播公式为 
@@ -117,10 +117,10 @@ $$ \varepsilon_{r}^{*}(y)=\frac{\varepsilon(y)}{\left|y^{*}\right|} \approx \sum
 ### 示例
 已知$a = \sqrt{2018}$，$b = \sqrt{2017}$ ，要估计$a - b$的有效数字位数。
 - **分析思路**：
-    - 利用`vpa`函数结合`char`函数和`str2double`函数获取\(a\)和\(b\)具有8位有效数字的近似值。
-    - 调用`getdigits`函数求得\(a\)和\(b\)近似值的误差限。
-    - 根据误差传播公式（两数差的绝对误差公式\(e(x_1 - x_2) \approx e(x_1)+e(x_2)\) ）得到\(a - b\)的误差限。
-    - 依据误差限反推出\(a - b\)的有效数字位数。
+    - 利用`vpa`函数结合`char`函数和`str2double`函数获取$a$和$b$具有8位有效数字的近似值。
+    - 调用`getdigits`函数求得$a$和$b$近似值的误差限。
+    - 根据误差传播公式（两数差的绝对误差公式$e(x_1 - x_2) \approx e(x_1)+e(x_2)$ ）得到$a - b$的误差限。
+    - 依据误差限反推出$a - b$的有效数字位数。
 - **完整MATLAB代码**：
 ```matlab
 % 设置数字显示方式
@@ -144,4 +144,4 @@ m = ceil(log10(abs(a1 - b1)));
 n = fix(log10(10^m/(2*e))); 
 ```
 - **结果说明**：
-通过上述代码，可得到\(a\)和\(b\)近似值的相关信息以及\(a - b\)的有效数字位数。需要注意，由误差估计式得出绝对误差限和相对误差限时，因取绝对值并用三角不等式放大，是按最坏情形给出，结果较为保守 。 
+通过上述代码，可得到$a$和$b$近似值的相关信息以及$a - b$的有效数字位数。需要注意，由误差估计式得出绝对误差限和相对误差限时，因取绝对值并用三角不等式放大，是按最坏情形给出，结果较为保守 。 

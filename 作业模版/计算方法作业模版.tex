@@ -1,0 +1,101 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{tcolorbox}
+\usepackage{mdframed}
+\usepackage{amsmath}  
+\usepackage{amssymb}  
+\usepackage{graphicx}
+\usepackage{float}  
+\usepackage{wrapfig}  
+\usepackage{algorithm}  
+\usepackage{algorithmic} 
+\usepackage{color,xcolor} 
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{booktabs} %绘制表格
+\usepackage{caption2} %标题居中
+\usepackage{geometry}
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=2.5cm,bottom=1.5cm}%设置页面尺寸
+
+\usepackage{listings} % 插入代码支持
+% 代码框设置
+\lstset{
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=10pt,
+    tabsize=2,
+    extendedchars=true,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    identifierstyle=\color{black},
+    commentstyle=\color{green},
+    rulecolor=\color{gray},
+    xleftmargin=2.5em,
+    language=python,
+    frame=lines,
+    showspaces=false,
+    showtabs=false,
+    xleftmargin=17pt,
+    framexleftmargin=17pt,
+    framexrightmargin=5pt,
+    framexbottommargin=4pt,
+    showstringspaces=false,
+}
+
+\usepackage{hyperref} % 超链接支持
+% 超链接设置
+\hypersetup{
+	colorlinks=true,
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=blue,
+	citecolor=red,
+	filecolor=green,
+	pdfborder={0 0 0}
+}
+%\usepackage{pdfpages}  % 插入pdf页支持 
+%\usepackage{longtable} % 长表格支持
+
+% 页眉页脚设置
+\usepackage{fancyhdr}
+\fancyhf{} % 清除当前页眉页脚的设置
+%\fancyhead[L]{ \small 计算方法作业模版 \\ \small\leftmark } % 左上角页眉
+%\fancyhead[C]{}
+%\fancyhead[R]{ \hyperlink{content}{\thepage}} % 右上角页眉
+%\fancyfoot[L]{左页脚内容} % 左侧页脚
+%\fancyfoot[C]{} % 中间页脚
+%\fancyfoot[R]{右页脚内容} % 右侧页脚
+\pagestyle{fancy}
+
+% 字体设置
+\usepackage{titlesec}
+\titleformat{\section}
+{\fontsize{18pt}{22pt}\selectfont\bfseries} % 20pt字体大小，24pt行距
+{\thesection}{1em}{}
+% 设置二级标题字体大小为18pt
+\titleformat{\subsection}
+{\fontsize{16pt}{19pt}\selectfont\bfseries} % 18pt字体大小，22pt行距
+{\thesubsection}{1em}{}
+%设定正文字体大小为小四
+\AtBeginDocument{\fontsize{12pt}{20pt}\selectfont}
+
+\title{ \fontsize{24pt}{24pt}\selectfont 计算方法作业模版} %
+\author{\fontsize{20pt}{20pt}\selectfont 同济大学\, \,xxx2359999} %
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	% 题目框
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		1.计算方法题目
+	\end{tcolorbox}
+	% 解答框
+		解答：
+	% 代码框
+	\lstinputlisting[language=Python, caption=problem1.py]{code/problem1.py}
+
+	
+\end{document}

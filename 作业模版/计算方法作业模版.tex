@@ -19,29 +19,29 @@
 \usepackage{listings} % 插入代码支持
 % 代码框设置
 \lstset{
-    basicstyle=\ttfamily,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    stepnumber=1,
-    numbersep=10pt,
-    tabsize=2,
-    extendedchars=true,
-    breaklines=true,
-    keywordstyle=\color{blue},
-    stringstyle=\color{red},
-    identifierstyle=\color{black},
-    commentstyle=\color{green},
-    rulecolor=\color{gray},
-    xleftmargin=2.5em,
-    language=python,
-    frame=lines,
-    showspaces=false,
-    showtabs=false,
-    xleftmargin=17pt,
-    framexleftmargin=17pt,
-    framexrightmargin=5pt,
-    framexbottommargin=4pt,
-    showstringspaces=false,
+	basicstyle=\ttfamily,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=2,
+	extendedchars=true,
+	breaklines=true,
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	identifierstyle=\color{black},
+	commentstyle=\color{brown},
+	rulecolor=\color{gray},
+	xleftmargin=2.5em,
+	language=python,
+	frame=lines,
+	showspaces=false,
+	showtabs=false,
+	xleftmargin=17pt,
+	framexleftmargin=17pt,
+	framexrightmargin=5pt,
+	framexbottommargin=4pt,
+	showstringspaces=false,
 }
 
 \usepackage{hyperref} % 超链接支持
@@ -61,7 +61,7 @@
 % 页眉页脚设置
 \usepackage{fancyhdr}
 \fancyhf{} % 清除当前页眉页脚的设置
-%\fancyhead[L]{ \small 计算方法作业模版 \\ \small\leftmark } % 左上角页眉
+\fancyhead[L]{ \small 计算方法作业模版 \href{https://github.com/weyumm/Numerical\_Analysis-Computational\_Methods}{https://github.com/weyumm/Numerical\_Analysis-Computational\_Methods}\small\leftmark } % 左上角页眉
 %\fancyhead[C]{}
 %\fancyhead[R]{ \hyperlink{content}{\thepage}} % 右上角页眉
 %\fancyfoot[L]{左页脚内容} % 左侧页脚
@@ -93,9 +93,11 @@
 		1.计算方法题目
 	\end{tcolorbox}
 	% 解答框
-		解答：
+	解答：
 	% 代码框
 	\lstinputlisting[language=Python, caption=problem1.py]{code/problem1.py}
 
+    \lstinputlisting[language=Python, caption=problem2.py]{code/problem1.py}
+	
 	
 \end{document}

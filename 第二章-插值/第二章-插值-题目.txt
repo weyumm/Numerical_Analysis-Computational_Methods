@@ -1,0 +1,59 @@
+\begin{document}
+	
+	\maketitle
+	% 题目框
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		1.已知函数表如下：
+		\begin{longtable}{c|c|c|c|c}
+		\hline
+		$x$   & 10      & 11      & 12      & 13      \\ \hline
+		$\ln x$ & 2.3026 & 2.3979 & 2.4849 & 2.5649 \\ \hline
+		\end{longtable}
+		
+		试分别用线性插值和二次插值计算 $\ln 11.75$ 的近似值，并估计截断误差。
+	\end{tcolorbox}
+	% 解答框
+	解答：
+	% 代码框
+	\lstinputlisting[language=Python, caption=problem1.py]{code/problem1.py}
+
+    \lstinputlisting[language=Python, caption=problem2.py]{code/problem1.py}
+
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		2.设$x_0$,$x_1$,\dots,$x_n$为任意给定的$n+1$个互不相同的节点，证明：\\
+		(1)若$f(x)$为不高于 n 次的多项式，则$f(x)$关于这组节点的 n 次插值多项式就是它自己；\\
+		(2)若$l_k(x)( k =0,1,\dots, n )$是关于这组节点的 n 次基本插值多项式，则有恒等式
+		\[
+		\sum_{k=0}^n x_k^m l_k(x) \equiv x^m (m = 0,1,...,n)
+		\]
+	\end{tcolorbox}
+	
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		3.已知函数表如下：
+		\begin{longtable}{c|c|c|c|c|c}
+		\hline
+		$x$   & 0.0      & 0.2      & 0.4      & 0.6   & 0.8   \\ \hline
+		$e^x$ & 1.0000 & 1.2214 & 1.4918 & 1.8221 & 2.2255 \\ \hline
+		\end{longtable}
+		
+		(1)分别用三点与四点前插公式计算$e^{0.12}$的近似值，并估计截断误差；以值。\\
+		(2)构造差商表，并分别用三点与四点牛顿基本插值公式计算$e^{0.12}$的近似值。
+	\end{tcolorbox}
+
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		4.今要在区间$［-4,4］$上构造 $f ( x )= e ^x$在等距节点下的函数表，问怎羊选取函数表的步长，才能保证用二次插值求 $e ^x$的近似值时，截断误差不超过$10^{-6}$?
+	\end{tcolorbox}
+
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!90!black,title=]
+		5.对于给定的插值条件：
+		\begin{longtable}{c|c|c|c|c}
+		\hline
+		$x$   & 0 & 1 & 2 & 3   \\ \hline
+		$y$ & 0 & 0 & 0 & 0  \\ \hline
+		\end{longtable}
+		分别求出满足下列边界条件的二次样条插值函数：\\
+		(1) $S''(0)=1,S''(3)=0$；\\
+		(2) $S'(0)=1,S'(3)=0$；\\
+	\end{tcolorbox}
+	
+\end{document}

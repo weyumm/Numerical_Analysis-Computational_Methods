@@ -12,7 +12,6 @@
 
   <a href="https://github.com/weyumm/Numerical_Analysis-Computational_Methods/issues"><img src="https://img.shields.io/github/issues/weyumm/Numerical_Analysis-Computational_Methods" alt="Open Issues"></a>
   <a href="https://github.com/weyumm/Numerical_Analysis-Computational_Methods/graphs/contributors"><img src="https://img.shields.io/github/contributors/weyumm/Numerical_Analysis-Computational_Methods?style=flat-square" alt="Contributors"></a>
-  <a href="https://hits.seeyoufarm.com"><img src="https://img.shields.io/badge/dynamic/json?color=79c83d&label=visitors&query=value&url=https://api.countapi.xyz/hit/weyumm.Numerical_Analysis-Computational_Methods/README" alt="Visitor Count"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/weyumm/Numerical_Analysis-Computational_Methods?style=flat-square" alt="License"></a>
 </div>
 

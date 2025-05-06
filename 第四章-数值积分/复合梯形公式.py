@@ -77,7 +77,7 @@ def composite_trapezoidal_report(f, a, b, n, func_str):
     print(f"绝对误差: {error:.2e}")
     print(f"相对误差: {relative_error:.6f}%")
     print("-" * 60 + "\n")
-    # ------------------------------------------------
+    # ---------------boatchanting-------------------
 
 
 # 示例使用
@@ -100,3 +100,28 @@ def integrand3(x):
     return x**2
 
 composite_trapezoidal_report(integrand3, 0, 1, 7, "x^2")'''
+
+# 扩展测试 boatchanting
+'''
+def integrand_1(x):
+    return x**3
+
+composite_trapezoidal_report(integrand_1, 0, 2, 8, "x^3")def integrand_2(x):
+    return math.sin(x)
+
+composite_trapezoidal_report(integrand_2, 0, math.pi, 10, "sin(x)")
+def integrand_3(x):
+    return math.exp(-x)
+
+composite_trapezoidal_report(integrand_3, 0, 3, 6, "exp(-x)")
+def integrand_4(x):
+    return 1 / (1 + x**2)
+
+composite_trapezoidal_report(integrand_4, -1, 1, 8, "1/(1+x^2)")
+def integrand_5(x):
+    if x < 1:
+        return x**2
+    else:
+        return 2 - x
+
+composite_trapezoidal_report(integrand_5, 0, 2, 10, "分段函数")'''

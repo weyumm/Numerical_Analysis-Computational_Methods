@@ -10,13 +10,22 @@ def composite_simpson(f, f_str, a, b, n):
 
     参数:
     f (function): 被积函数
+    
     f_str (str): 函数表达式字符串，用于报告展示
+
     a (float): 积分下限
+
     b (float): 积分上限
+
     n (int): 子区间数量，必须为偶数
 
     返回:
     float: 积分的近似值
+
+    示例使用：
+    >>> def f(x):
+    ...     return x**2
+    >>> composite_simpson(f, "x^2", 0, 2, 4)
     """
 
     if n % 2 != 0:
@@ -129,4 +138,11 @@ composite_simpson(f1, "x / (4 + x^2)", 3, 6, 8)
 # 示例 2: ∫₀¹ e^(-x²) dx, n = 4
 def f2(x):
     return math.exp(-x**2)
-composite_simpson(f2, "e^(-x^2)", 0, 1, 4)
+composite_simpson(f2, "e^(-x^2)", 0, 1, 5)
+
+'''
+
+'''
+# 扩展测试1
+f_test_1 = lambda x: x**3 + 2*x**2 - x + 1
+composite_simpson(f_test_1, "x**3 + 2*x**2 - x + 1", 0, 2, 10)

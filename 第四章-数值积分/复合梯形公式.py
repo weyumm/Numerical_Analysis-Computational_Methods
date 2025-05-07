@@ -16,7 +16,7 @@ def composite_trapezoidal_report(f, a, b, n, func_str):
     b : float
         积分上限。
     n : int
-        子区间数，必须是正整数。
+        子区间数，必须是正整数。子区间数=点数-1。
     func_str : str
         被积函数的字符串表示，用于报告输出。
     """
@@ -81,7 +81,7 @@ def composite_trapezoidal_report(f, a, b, n, func_str):
 
 
 # 示例使用
-'''
+
 def integrand1(x):
     """
     被积函数，计算 x / (4 + x^2) 的值。
@@ -90,7 +90,7 @@ def integrand1(x):
 
 # 调用函数生成报告
 composite_trapezoidal_report(integrand1, 3, 6, 8, "x / (4 + x^2)")
-
+'''
 def integrand2(x):
     return math.sin(x)
 

@@ -1,8 +1,7 @@
 import math
 
 def newton_method(f, df, f_str, df_str, x0, tol, max_iter):
-    """boatchanting
-
+    """
     牛顿法求解方程 f(x) = 0 的近似根
 
     参数:
@@ -19,13 +18,6 @@ def newton_method(f, df, f_str, df_str, x0, tol, max_iter):
     tol      : 精度要求 (|x_{k+1} - x_k| < tol)
 
     max_iter : 最大迭代次数
-
-    示例使用：
-    >>> def f(x):
-    ...     return x**2 - 4
-    >>> def df(x):
-    ...     return 2*x
-    >>> newton_method(f, df, "x^2 - 4", "2x", 1.5, 1e-5, 100)
 
     """
     # 打印函数定义

@@ -69,7 +69,7 @@
 | 第五章 | 二分法       |   boatchanting       |          |                |
 | 第五章 | 牛顿法       | boatchanting |          |                |
 | 第五章 | 牛顿下山法   |          |          |                |
-| 第五章 | 正割法       |          |          |                |
+| 第五章 | 正割法       |  boatchanting        |          |                |
 | 第五章 | 抛物线法(Muller法) | boatchanting           |          |                |
 | 第五章 | Aitken加速(Steffensen迭代法) |          |          |                |
 | 第六章 | 高斯消去法   |          |          |                |

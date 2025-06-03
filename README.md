@@ -72,11 +72,11 @@
 | 第五章 | 正割法       |  boatchanting        |          |                |
 | 第五章 | 抛物线法(Muller法) | boatchanting           |          |                |
 | 第五章 | Aitken加速(Steffensen迭代法) |fatrotating |          |                |
-| 第六章 | 高斯消去法   |          |          |                |
-| 第六章 | 全主元高斯消去法 |          |          |                |
-| 第六章 | 列主元高斯消去法 |          |          |                |
-| 第六章 | 杜立特尔(Doolittle LU)分解 |          |          |                |
-| 第六章 | 克劳特(Crout LU)分解 |          |          |                |
+| 第六章 | 高斯消去法   |fatrotating|          |                |
+| 第六章 | 完全主元高斯消去法 |fatrotating|          |                |
+| 第六章 | 列主元高斯消去法 |       |          |                |
+| 第六章 | 杜立特尔(Doolittle LU)分解 |fatrotating|          |                |
+| 第六章 | 克劳特(Crout LU)分解 |fatrotating|          |                |
 | 第六章 | 追赶法(三对角线方程组) | √  |          |                |
 | 第六章 | 平方根法(对称正定矩阵方程组) |√ |          |                |
 | 第六章 | 雅可比迭代   |          |          |                |

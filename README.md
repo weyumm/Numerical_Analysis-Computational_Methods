@@ -67,7 +67,7 @@
 | 第四章 | 龙贝格方法   |          |          |                |
 | 第四章 | 高斯型求积   |          |          |                |
 | 第五章 | 二分法       |   boatchanting       |          |                |
-| 第五章 | 牛顿法       | boatchanting |          |                |
+| 第五章 | 牛顿法       | boatchanting | fatrotating|                |
 | 第五章 | 牛顿下山法   |          |          |                |
 | 第五章 | 正割法       |  boatchanting        |          |                |
 | 第五章 | 抛物线法(Muller法) | boatchanting           |          |                |

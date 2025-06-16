@@ -78,11 +78,11 @@ def print_step_matrix(step, matrix):
 # 示例用法
 if __name__ == "__main__":
     A = [
-        [0, 3, 4],
-        [1, -1, 1],
-        [2, 1, 2]
+        [3, -0.1, 1],
+        [5, 4, 10],
+        [1, 2, 3]
     ]
-    b = [1, 2, 3]
+    b = [2, 0, 1]
     
     x, P, L, U = 列主元消去法符号版(A, b, print_steps=True)
     

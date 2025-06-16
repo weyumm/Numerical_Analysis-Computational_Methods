@@ -2,12 +2,12 @@ import numpy as np
 
 # 微分方程 y' = x + y
 def f(x, y):
-    return x + y
+    return -2/(y-x)
 
 # 初值与步长
 x0, y0 = 0.0, -1.0
 h        = 0.1
-x_end    = 2.0
+x_end    = 1.0
 
 # 生成网格点
 xs = np.arange(x0, x_end + h, h)       # 包含终点

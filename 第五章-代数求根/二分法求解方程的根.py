@@ -1,3 +1,4 @@
+import math
 def bisection_method(f, a, b, tol, max_iter=100):
     """
     使用二分法求解方程f(x)=0在区间[a, b]内的根
@@ -45,11 +46,11 @@ def bisection_method(f, a, b, tol, max_iter=100):
     return final_mid, iterations, history
 
 # 定义目标函数
-f = lambda x: x**4 - 3*x + 1
+f = lambda x: 3*x**2-math.e**x
 
 # 设置求解参数
-a_initial = 0.3
-b_initial = 0.4
+a_initial = 3
+b_initial = 4
 tolerance = 0.5e-5  # 精确到小数点后第五位
 
 # 执行二分法求解

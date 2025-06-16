@@ -111,11 +111,11 @@ import math
 
 # 定义目标函数
 def f(x):
-    return x**2 - 30
+    return x**5-x-0.2
 
 # 定义导数函数
 def df(x):
-    return 2 * x
+    return 4*x**4-1
 
 # 调用牛顿法求根
 newton_method(
@@ -123,7 +123,7 @@ newton_method(
     df=df,
     f_str="f(x) = x^2 - 30",
     df_str="f'(x) = 2x",
-    x0=5.0,         # 初始猜测值（接近√30 ≈ 5.477）
+    x0=1.0,         # 初始猜测值（接近√30 ≈ 5.477）
     tol=1e-5,       # 精度要求
     max_iter=100    # 最大迭代次数
 )

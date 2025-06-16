@@ -39,7 +39,7 @@ def rk2(f, x0, y0, h, xn):
 
 # 定义微分方程
 def f(x, y):
-    return x + y
+    return -2/(y-x)
 
 # 定义精确解
 def exact_solution(x):
@@ -49,7 +49,7 @@ def exact_solution(x):
 x0 = 0.0
 y0 = -1.0
 h = 0.1
-xn = 2.0
+xn = 1.0
 
 # 计算数值解
 x_values, y_values = rk2(f, x0, y0, h, xn)

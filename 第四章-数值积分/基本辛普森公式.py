@@ -64,3 +64,5 @@ if __name__ == "__main__":
     
     # 测试4：指数函数
     basic_simpson_report(lambda x: math.exp(x), 0, 1, "e^x")
+
+    basic_simpson_report(lambda x: math.sqrt(2-math.sin(x)*2),math.sqrt(2),math.pi/6,"heoue")

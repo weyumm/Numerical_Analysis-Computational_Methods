@@ -53,13 +53,14 @@ def parabolic_root(
               "          f_0          f_1          f_2")
         print("-" * 91)
 
-    k = 2  # 从第三个点开始算迭代 0
+    k = 0  # 修改1：迭代计数器从0开始
     while k < max_iter:
         xkm2, xkm1, xk = xs[-3:]
         fkm2, fkm1, fk = func(xkm2), func(xkm1), func(xk)
 
         if report:
-            print(f"{k-1:4d} | {xkm2:12.9f} {xkm1:12.9f} {xk:12.9f} |"
+            # 修改2：直接使用当前迭代次数k
+            print(f"{k:4d} | {xkm2:12.9f} {xkm1:12.9f} {xk:12.9f} |"
                   f" {fkm2:12.6e} {fkm1:12.6e} {fk:12.6e}")
 
         # 差商与系数
@@ -81,8 +82,9 @@ def parabolic_root(
         if abs(dx) < tol:
             xs.append(x_next)
             if report:
-                print(f"{k:4d} | 收敛: |x_{k+1}-x_k| = {abs(dx):.2e} < {tol}")
-            return x_next, k - 1
+                # 修改3：显示实际迭代次数
+                print(f"收敛于第{k+1}次迭代: |x_{k+1}-x_k| = {abs(dx):.2e} < {tol}")
+            return x_next, k + 1  # 返回实际迭代次数
 
         xs.append(x_next)
         k += 1
@@ -104,9 +106,10 @@ if __name__ == "__main__":
             "x0": 1.0, "x1": 1.5, "x2": 1.3
         },
         {
+            # 修改4：修正示例3的函数定义
             "desc": "示例 3：sin(x) - 0.5 = 0  (最小正根≈0.523599)",
-            "func": lambda x: math.sin(x) - 0.5,
-            "x0": 0.2, "x1": 1.0, "x2": 0.6
+            "func": lambda x: 8*x**4-8*x**2+1,
+            "x0": 0.3, "x1": 0.5, "x2": 0.4
         },
     ]
 

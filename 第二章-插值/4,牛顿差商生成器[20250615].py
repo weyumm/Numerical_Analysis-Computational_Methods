@@ -187,10 +187,10 @@ def main(x_list, y_list, x, num_points=3):
 
 # 示例调用
 if __name__ == "__main__":
-    x_list = np.array([0.5, 1.0, 1.5, 2.0])
-    y_list = np.array([0.75, 1.25, 2.5, 5.5])
+    x_list = np.array([100,121,144])
+    y_list = np.array([10,11,12])
 
     # 示例：对 x=1.75 进行 3 点插值,二次插值多项式
     #main(x_list, y_list, x=1.75, num_points=3)
     # 示例：对 x=1.75 进行 4 点插值,三次插值多项式
-    main(x_list, y_list, x=1.75, num_points=4)
+    main(x_list, y_list, x=115, num_points=3)

@@ -99,7 +99,7 @@ if __name__ == "__main__":
         # (函数, 初值 x0, 初值 x1, 描述)
         (lambda x: x**4 - 3*x + 1, 0.3, 0.4, "示例 1 :  x^4 - 3x + 1 = 0"),
         (lambda x: math.cos(x) - x,     0.0, 1.0, "示例 2 :  cos(x) - x = 0"),
-        (lambda x: x**3 - 2*x - 5, 2.0, 3.0, "示例 3 :  x^3 - 2x - 5 = 0"),
+        (lambda x: 8*x**4-8*x**2+1,0.3,0.4, "示例 3 :  x^3 - 2x - 5 = 0"),
     ]
 
     for f, x0, x1, desc in tests:

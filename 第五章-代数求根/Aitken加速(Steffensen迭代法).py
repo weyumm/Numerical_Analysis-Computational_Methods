@@ -2,7 +2,7 @@ import math
 
 # 不动点函数 g(x) = e^(-x)
 def g(x):
-    return math.exp(-x)
+    return x**4-3*x+1
 
 # 史蒂芬森迭代法
 def steffensen_method(g, x0, tol=1e-6, max_iter=100):
@@ -37,4 +37,4 @@ def steffensen_method(g, x0, tol=1e-6, max_iter=100):
     return None
 
 # 设置初始值
-steffensen_method(g, x0=0.5)
+steffensen_method(g, x0=0.3)

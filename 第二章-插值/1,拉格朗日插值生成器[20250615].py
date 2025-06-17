@@ -77,29 +77,63 @@ def calculate_interpolation(x_val, selected_x, selected_y, polynomial):
     print(f"最终结果: P({x_val:.2f}) ≈ {final_value:.6f}")
     return final_value
 
-def calculate_truncation_error(x, selected_x, selected_y, n_points, func_expr=None):
+def calculate_truncation_error(x_val, selected_x, selected_y, n_points, func_expr=None):
     """计算截断误差"""
-    x_sym = symbols('x')
-    product_term = 1.0
-    
-    for xi in selected_x:
-        product_term *= (x - xi)
-    
-    if func_expr:
-        nth_derivative = diff(func_expr, x_sym, n_points)
-        max_deriv = abs(nth_derivative.subs(x_sym, min(selected_x)))
-        for xi in selected_x:
-            current = abs(nth_derivative.subs(x_sym, xi))
-            if current > max_deriv:
-                max_deriv = current
-                
-        error_bound = abs(product_term) / math.factorial(n_points) * max_deriv
-        print(f"\n【截断误差估计】")
+    if func_expr is None:
+        print("\n【截断误差估计】")
         print("-" * 60)
-        print(f"R_{n_points-1}(x) = f^{n_points}(ξ)/{n_points}! * Π(x-x_i)")
-        print(f"误差上界: {error_bound:.6e}")
+        print("无法计算截断误差：未提供原始函数表达式")
+        return None
     
-    return product_term
+    x_sym = symbols('x')
+    
+    # 计算乘积项: (x - x0)(x - x1)...(x - xn)
+    product_term = 1.0
+    for xi in selected_x:
+        product_term *= (x_val - xi)
+    
+    # 计算n_points阶导数
+    try:
+        nth_derivative = diff(func_expr, x_sym, n_points)
+    except Exception as e:
+        print(f"计算导数时出错: {e}")
+        return None
+    
+    print(f"\n【截断误差估计】")
+    print("-" * 60)
+    print(f"R_{n_points-1}(x) = f^{n_points}(ξ)/{n_points}! * Π(x-x_i)")
+    
+    # 在区间[min(selected_x), max(selected_x)]上寻找导数的最大值
+    interval_min = min(selected_x)
+    interval_max = max(selected_x)
+    
+    # 在区间内生成100个点评估导数
+    test_points = np.linspace(interval_min, interval_max, 100)
+    deriv_func = lambdify(x_sym, nth_derivative, 'numpy')
+    
+    max_deriv = -np.inf
+    for pt in test_points:
+        try:
+            deriv_val = abs(deriv_func(pt))
+            if deriv_val > max_deriv:
+                max_deriv = deriv_val
+        except:
+            continue
+    
+    if max_deriv == -np.inf:
+        print("警告：无法在区间内计算导数最大值")
+        max_deriv = 1.0
+    
+    # 计算误差上界
+    factorial_term = math.factorial(n_points)
+    error_bound = abs(product_term) * max_deriv / factorial_term
+    
+    print(f"乘积项: |Π(x-x_i)| = {abs(product_term):.6e}")
+    print(f"f^{n_points}(x)在区间[{interval_min:.2f}, {interval_max:.2f}]内的最大绝对值: {max_deriv:.6e}")
+    print(f"{n_points}! = {factorial_term}")
+    print(f"误差上界: |R_{n_points-1}({x_val:.2f})| ≤ {error_bound:.6e}")
+    
+    return error_bound
 
 def plot_interpolation(x_list, y_list, selected_x, polynomial, x_unknown):
     """可视化插值结果"""
@@ -151,22 +185,39 @@ def main(x_list, y_list, x, num_points=3, func_expr=None):
     polynomial = construct_lagrange_polynomial(selected_x, selected_y)
     
     # 计算插值点
-    calculate_interpolation(x, selected_x, selected_y, polynomial)
+    interpolated_value = calculate_interpolation(x, selected_x, selected_y, polynomial)
     
     # 计算截断误差
-    if func_expr:
-        calculate_truncation_error(x, selected_x, selected_y, num_points, func_expr)
+    error_bound = calculate_truncation_error(x, selected_x, selected_y, num_points, func_expr)
+    
+    # 如果原始函数表达式已知，计算真实误差
+    if func_expr and interpolated_value is not None:
+        true_func = lambdify(symbols('x'), func_expr, 'numpy')
+        try:
+            true_value = true_func(x)
+            actual_error = abs(true_value - interpolated_value)
+            print(f"\n【实际误差】")
+            print("-" * 60)
+            print(f"真实值: f({x:.2f}) = {true_value:.6f}")
+            print(f"插值值: P({x:.2f}) = {interpolated_value:.6f}")
+            print(f"实际误差: |真实值 - 插值值| = {actual_error:.6e}")
+            
+            if error_bound is not None:
+                print(f"误差上界与实际误差的比例: {error_bound/actual_error:.2f}倍")
+        except Exception as e:
+            print(f"计算真实值时出错: {e}")
     
     # 绘制插值曲线
     plot_interpolation(x_list, y_list, selected_x, polynomial, x)
 
 # 示例调用
 if __name__ == "__main__":
-    x_list = np.array([0.0, 0.2, 0.4, 0.6, 0.8])
-    y_list = np.array([1.0000, 1.2214, 1.4918, 1.8221, 2.2255])
+    x_list = np.array([10, 11, 12, 13])
+    y_list = np.array([2.3026, 2.3979, 2.4849, 2.5649])
     
-    # 示例：对 x=0.12 进行 3 点插值
-    main(x_list, y_list, x=0.12, num_points=3)
+    # 定义原始函数 (ln(x))
+    x_sym = symbols('x')
+    func_expr = ln(x_sym)
     
-    # 示例：对 x=0.3 进行 4 点插值
-    # main(x_list, y_list, x=0.3, num_points=4)
+    # 示例：对 x=11.75 进行 3 点插值
+    main(x_list, y_list, x=11.75, num_points=3, func_expr=func_expr)

@@ -35,6 +35,8 @@ def simple_iteration(g, x0, tol=1e-6, max_iter=100, root_name=""):
 # 可视化函数和迭代过程
 def plot_function_and_iteration(f, roots, histories, x_range=(-2, 4)):
     plt.figure(figsize=(12, 8))
+    plt.rcParams['font.size'] = 14
+    plt.rcParams['font.family'] = 'SimHei'
     
     # 绘制函数曲线
     x = np.linspace(x_range[0], x_range[1], 400)

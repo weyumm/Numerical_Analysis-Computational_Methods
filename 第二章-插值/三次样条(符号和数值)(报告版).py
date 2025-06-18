@@ -227,6 +227,8 @@ class CubicSplineSymbolic:
             ln(f"    S_{i}(x) = {latex(Si)}")
         ln("")
 
+        
+
         # —— 拼装整体 S(x)
         pw_parts = []
         for i, Si in enumerate(self.polys):
@@ -237,8 +239,6 @@ class CubicSplineSymbolic:
         ln("整体样条函数:")
         ln("S(x) = piecewise{ " + ", ".join(pw_parts) + " }")
         ln("")
-
-        ln("=" * 70)
 
     # ----------------- 公共方法 -----------------
 
@@ -280,6 +280,64 @@ class CubicSplineSymbolic:
         plt.grid(True)
         plt.show()
 
+from types import MethodType
+from sympy import N
+
+def _generate_numeric_report(self, digits: int = 8) -> str:
+    """
+    生成纯数值（三角/分数全部转浮点）的报告。
+    digits : 浮点有效数字
+    """
+    if self.M is None:
+        raise RuntimeError("请先调用 fit()")
+
+    report = []              # 存放所有行
+    add = report.append       # 快捷函数
+
+    # ===== 报告主体 =====
+    add("=" * 20 + " 【三次样条插值方法·数值版】 " + "=" * 20)
+    add("")
+
+    # --- 节点信息 ---
+    header = "i | " + " | ".join(f"{i:^12}" for i in range(len(self.x)))
+    xpos   = "x | " + " | ".join(f"{float(xi):^{12}.{digits}g}" for xi in self.x)
+    ypos   = "y | " + " | ".join(f"{float(yi):^{12}.{digits}g}" for yi in self.y)
+    add(header)
+    add("-" * len(header))
+    add(xpos)
+    add(ypos)
+    add("")
+
+    # --- 二阶导 ---
+    add("节点二阶导数 M_i = S\"(x_i)（浮点近似）:")
+    add("  " + ", ".join(
+        f"M_{i} = {float(N(mi, digits)):.{digits}g}"
+        for i, mi in enumerate(self.M)
+    ))
+    add("")
+
+    # --- 分段多项式 ---
+    add("各区间三次多项式 S_i(x)（已展开并浮点化）:")
+    t = Symbol('x')
+    for i, Si in enumerate(self.polys):
+        poly_num = N(Si.expand(), digits)
+        a3, a2, a1, a0 = [float(N(c, digits)) for c in poly_num.as_poly(t).all_coeffs()]
+        interval = f"[{float(self.x[i]):g}, {float(self.x[i+1]):g}]"
+        add(f"  区间 {interval}:")
+        add(f"    S_{i}(x) = {a3:.{digits}g}·x³ "
+            f"+ {a2:.{digits}g}·x² + {a1:.{digits}g}·x + {a0:.{digits}g}")
+    add("")
+
+    # --- Piecewise 说明（只列区间） ---
+    add("区间分布: " + ", ".join(
+        f"[{float(self.x[i]):g}, {float(self.x[i+1]):g}]" for i in range(self.n)
+    ))
+
+    return "\n".join(report)
+
+
+# 绑定到类
+CubicSplineSymbolic.generate_numeric_report = _generate_numeric_report
 
 def demo():
     # ---------- 示例 1：题目（1）指定二阶导 ----------
@@ -288,6 +346,7 @@ def demo():
     spline1 = CubicSplineSymbolic(xs, ys)
     spline1.fit(bc_type='second', bc_vals=(1, 0))
     print(spline1.generate_report())
+    print(spline1.generate_numeric_report(digits=6))
     spline1.plot()
 
     # ---------- 示例 2：题目（2）指定一阶导 ----------

@@ -84,11 +84,11 @@ def cubic_spline_generator(x_list, y_list, boundary_type, boundary_values):
     return latex_str
 
 # 测试用例
-x_list = [0, 1, 2, 3]
-y_list = [0, 0, 0, 0]
+x_list = [-1.5, 0, 1, 2]
+y_list = [0.125, -1, 1, 9]
 
 print("问题(1) 自然边界条件：")# 边界二阶导数值（左，右）
-print(cubic_spline_generator(x_list, y_list, 'natural', [1, 0]))
+print(cubic_spline_generator(x_list, y_list, 'natural', [0.75, 14]))
 
 print("\n问题(2) 固定一阶导数边界条件：")# 边界一阶导数值（左，右）
-print(cubic_spline_generator(x_list, y_list, 'clamped', [1, 0]))
+print(cubic_spline_generator(x_list, y_list, 'clamped', [0.75,14]))

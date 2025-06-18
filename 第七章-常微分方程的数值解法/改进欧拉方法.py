@@ -8,7 +8,7 @@
 import sympy as sp
 
 # 1. 定义符号
-a, b, h, n = sp.symbols('a b h n', real=True)
+a,b,h,n=sp.symbols('a b h n',real=True)
 # 节点 x_n = n*h
 x_n = n * h
 # 下一节点 x_{n+1}

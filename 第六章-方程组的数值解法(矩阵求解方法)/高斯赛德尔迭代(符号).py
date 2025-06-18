@@ -1,4 +1,8 @@
-﻿import sympy as sp
+﻿"""
+这个代码并不好写，我觉得这个符号版怪怪的，但代码能跑
+"""
+
+import sympy as sp
 
 def gauss_seidel_symbolic(A, b, x0=None, max_iter=3):
     """
@@ -58,3 +62,23 @@ b_vec = sp.Matrix([e, f])
 
 # 运行示例
 solution = gauss_seidel_symbolic(A, b_vec, max_iter=3)
+
+# 示例2
+A1 = sp.Matrix([[ 4, -1,  1],
+                   [ 4, -8,  1],
+                   [-2,  1,  5]], dtype=float)
+b1 = sp.Matrix([  7, -21, 15], dtype=float)
+solution = gauss_seidel_symbolic(A1, b1, max_iter=10)
+
+A = sp.Matrix([
+    [sp.Rational(78,100), sp.Rational(-2,100), sp.Rational(-12,100), sp.Rational(-14,100)],
+    [sp.Rational(-2,100), sp.Rational(86,100), sp.Rational(-4,100), sp.Rational(-6,100)],
+    [sp.Rational(-12,100), sp.Rational(-4,100), sp.Rational(72,100), sp.Rational(-8,100)],
+    [sp.Rational(-14,100), sp.Rational(-6,100), sp.Rational(-8,100), sp.Rational(74,100)]
+])
+b = sp.Matrix([
+    sp.Rational(76,100), sp.Rational(8,100), sp.Rational(112,100), sp.Rational(68,100)
+])
+
+# 运行示例迭代
+solution = gauss_seidel_symbolic(A, b, max_iter=5)

@@ -2,7 +2,7 @@ import numpy as np
 
 # 定义被积函数，处理 x = 0 处的可去奇点
 def f(x):
-    return np.sin(x) / x if x != 0 else 1.0
+    return 4/(1+x**2)
 
 # 龙贝格积分函数（带过程输出）
 def romberg_integration(f, a, b, tol=0.5e-6, max_iter=10):

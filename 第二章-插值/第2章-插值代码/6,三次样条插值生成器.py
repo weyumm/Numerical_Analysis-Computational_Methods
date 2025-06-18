@@ -8,7 +8,7 @@ def format_fraction(expr):
 
 def cubic_spline_generator(x_list, y_list, boundary_type, boundary_values):
     n = len(x_list) - 1
-    h = x_list[1] - x_list[0]
+    h = x_list[1] - x_list[0]   #无法解决步长不相等的问题
     
     # 构造三弯矩方程
     A = np.zeros((n+1, n+1), dtype=object)
@@ -88,7 +88,7 @@ x_list = [-1.5, 0, 1, 2]
 y_list = [0.125, -1, 1, 9]
 
 print("问题(1) 自然边界条件：")# 边界二阶导数值（左，右）
-print(cubic_spline_generator(x_list, y_list, 'natural', [0.75, 14]))
+print(cubic_spline_generator(x_list, y_list, 'natural', [0, 0]))
 
 print("\n问题(2) 固定一阶导数边界条件：")# 边界一阶导数值（左，右）
 print(cubic_spline_generator(x_list, y_list, 'clamped', [0.75,14]))

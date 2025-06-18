@@ -4,6 +4,8 @@ import sympy as sp
 a1,b1,c1,d1 = sp.symbols('a1 b1 c1 d1', real=True)
 a2,b2,c2,d2 = sp.symbols('a2 b2 c2 d2', real=True)
 a3,b3,c3,d3 = sp.symbols('a3 b3 c3 d3', real=True)
+#a4,b4,c4,d4 = sp.symbols('a4 b4 c4 d4', real=True)
+#a5,b5,c5,d5 = sp.symbols('a5 b5 c5 d5', real=True)
 
 # 定义符号变量 x
 x = sp.symbols('x', real=True)
